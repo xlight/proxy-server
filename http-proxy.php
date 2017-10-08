@@ -34,8 +34,10 @@ class HttpProxyServer
         return HttpProxyServer::$frontends[$fd];
     }
 }
+$host = isset($_ENV['PROXY_HOST']) ? $_ENV['PROXY_HOST'] : '127.0.0.1';
+$port = isset($_ENV['PROXY_PORT']) ? $_ENV['PROXY_PORT'] : 9510;
 
-$serv = new swoole_http_server('127.0.0.1', 9510, SWOOLE_BASE);
+$serv = new swoole_http_server($host , $port, SWOOLE_BASE);
 //$serv = new swoole_http_server('127.0.0.1', 9510, SWOOLE_PROCESS);
 //$serv->set(array('worker_num' => 8));
 
